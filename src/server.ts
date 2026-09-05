@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
-import { searchLoadsInTMS } from './tmsClient';
+import { searchLoadsInTMS } from './tmsClient.ts';
 
 dotenv.config();
 
@@ -65,7 +65,6 @@ app.post('/generate-otp', (req: Request, res: Response) => {
         res.json({
             status: 'success',
             message: 'Código OTP gerado com sucesso.',
-            // Em ambiente de homologação/desafio, retornar o código facilita o teste pelo agente
             debugOtp: storedOtp 
         });
     } catch (error: any) {
@@ -89,7 +88,6 @@ app.post('/verify-otp', (req: Request, res: Response) => {
         }
 
         if (storedOtp && otp.toString() === storedOtp) {
-            // Limpa o OTP após o uso bem-sucedido
             storedOtp = null;
             return res.json({
                 status: 'success',

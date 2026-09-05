@@ -21,7 +21,6 @@ export const searchLoadsInTMS = async (origin: string, destination: string, equi
             
             if (origin) {
                 const cleanOrigin = origin.trim();
-                // Se tiver 2 letras, usa o filtro de Estado (ex: GA), senão usa Cidade
                 if (cleanOrigin.length === 2) {
                     requestString += `|ORIG_STATE:${cleanOrigin.toUpperCase()}`;
                 } else {
@@ -32,7 +31,6 @@ export const searchLoadsInTMS = async (origin: string, destination: string, equi
             
             if (destination) {
                 const cleanDest = destination.trim();
-                // Se tiver 2 letras, usa o filtro de Estado (ex: TX), senão usa Cidade
                 if (cleanDest.length === 2) {
                     requestString += `|DEST_STATE:${cleanDest.toUpperCase()}`;
                 } else {
@@ -42,12 +40,10 @@ export const searchLoadsInTMS = async (origin: string, destination: string, equi
             }
             
             if (equipmentType) {
-                // Transforma "dry van" em "DRY_VAN" conforme exigido pelo manual
                 const eqType = equipmentType.toUpperCase().replace(/ /g, '_');
                 requestString += `|EQTYPE:${eqType}`; 
             }
             
-            // Adicionado limite para padronizar com os transcripts do manual
             requestString += `|MAX_RESULTS:10\r\n`;
 
             console.log("➡️ STRING EXATA ENVIADA AO TMS:");
@@ -80,7 +76,6 @@ export const searchLoadsInTMS = async (origin: string, destination: string, equi
                         if (pair) {
                             const [key, value] = pair.split(':');
                             if (key && value) {
-                                // O trim() limpa os espaços residuais do formato de largura fixa
                                 loadObj[key.trim().toLowerCase()] = value.trim(); 
                             }
                         }
