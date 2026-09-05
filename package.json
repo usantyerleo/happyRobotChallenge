@@ -2,7 +2,7 @@
   "name": "codigo",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.ts",
+  "main": "dist/server.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,8 +23,8 @@
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "echo 'No build required'",
-    "start": "npx tsx src/server.ts",
+    "build": "npx tsc",
+    "start": "node dist/server.js",
     "test": "jest"
   }
 }
