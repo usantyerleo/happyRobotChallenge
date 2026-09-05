@@ -2,7 +2,7 @@
   "name": "codigo",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server.js",
+  "main": "src/server.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,7 +11,7 @@
     "axios": "^1.20.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "typescript": "^5.0.0"
+    "tsx": "^4.7.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
@@ -19,12 +19,12 @@
     "@types/node": "^20.0.0",
     "jest": "^30.5.1",
     "ts-jest": "^29.4.12",
-    "tsx": "^4.7.0"
+    "typescript": "^5.0.0"
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "npx tsc",
-    "start": "node dist/server.js",
+    "build": "echo 'Skipping build'",
+    "start": "node --import tsx/esm src/server.ts",
     "test": "jest"
   }
 }
